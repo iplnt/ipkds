@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="icon" https://blogger.googleusercontent.com/img/a/AVvXsEjWypgdglgWhsUiuy2VwlqJFqHX2OoqfnqL183BK3oyatRhOB8tGX2cfKBzNgdwGa0J4s_Vbe8mbm3mmHCCOna2qGAZoP_czDXEksJvA7lP3BtZP2Qh79J_WU-2rk6vxM-zks60JRyBepAeUYEQ6drsFQbSucGvSOFOA83h9Sl-ljdN5THPZmUEY6rCbVa3" type="image/x-icon">
+  <link rel="icon" href="https://blogger.googleusercontent.com/img/a/AVvXsEjWypgdglgWhsUiuy2VwlqJFqHX2OoqfnqL183BK3oyatRhOB8tGX2cfKBzNgdwGa0J4s_Vbe8mbm3mmHCCOna2qGAZoP_czDXEksJvA7lP3BtZP2Qh79J_WU-2rk6vxM-zks60JRyBepAeUYEQ6drsFQbSucGvSOFOA83h9Sl-ljdN5THPZmUEY6rCbVa3" type="image/x-icon">
   <title>IPKDS - Sistema POS</title>
   
   <link rel="manifest" href="manifest.json">
@@ -62,9 +62,18 @@
     <i class="fa-solid fa-download"></i> Instalar IPKDS
   </button>
 
-  <iframe src="https://script.google.com/macros/s/AKfycbxdE5ktjmXQPDBmjtdCQzcDet0qpxpORUBXVXnoXhmX5e-QjDte8BgYglOJOBBzFiqIyA/exec" allowfullscreen></iframe>
+  <iframe id="app-frame" allowfullscreen></iframe>
 
   <script>
+    // 1. LÓGICA PARA LEER LA URL Y PASÁRSELA A GOOGLE SCRIPT
+    const urlBase = "https://script.google.com/macros/s/AKfycbxdE5ktjmXQPDBmjtdCQzcDet0qpxpORUBXVXnoXhmX5e-QjDte8BgYglOJOBBzFiqIyA/exec";
+    const parametros = window.location.search; // Esto captura el "?view=menu" de la barra de direcciones
+    
+    // Le decimos al iframe que cargue la ruta base + lo que sea que el usuario haya escrito arriba
+    document.getElementById("app-frame").src = urlBase + parametros;
+
+
+    // 2. REGISTRO DEL SERVICE WORKER
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
@@ -77,6 +86,7 @@
       });
     }
 
+    // 3. EVENTO DE INSTALACIÓN
     let eventoInstalacionDiferido;
     const btnInstalar = document.getElementById('btn-instalar');
 
