@@ -1,0 +1,18 @@
+{
+  "name": "Sistema IPKDS",
+  "short_name": "IPKDS",
+  "description": "Sistema POS y KDS de Interplanet",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://blogger.googleusercontent.com/img/a/AVvXsEh3piIiHO0tV9gSGi6FBrefJpC8itVlqra18vKHE1yHSJXI2U9omcC17rudoEGR2oVPkumHRj5fapHrgA_rL3N-qWQJh9frVOaNWhtKM7eIb0GC06a5fdEM7MxW4VPeydo1fRcufX2LL3WoayzV80rKRqDZej1UOBI5ds_eHscZkx3-JPvLetCzSA4-PsE8",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
